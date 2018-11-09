@@ -8,6 +8,12 @@
     tools:context=".MainActivity">
 
     <Button
+        android:id="@+id/btnConexao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Conectar" />
+
+    <Button
         android:id="@+id/btnLed1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
