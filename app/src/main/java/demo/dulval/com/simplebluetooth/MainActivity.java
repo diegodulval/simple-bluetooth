@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -15,7 +16,9 @@ public class MainActivity extends AppCompatActivity {
     Button btnConexao, btnLed1, btnLed2, btnLed3;
 
     private static final int SOLICITA_ATIVACAO_BLUE = 1;
+    private static final int SOLICITA_CONEXAO_BLUE = 2;
     BluetoothAdapter meuBlue = null;
+    boolean conexao = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,19 @@ public class MainActivity extends AppCompatActivity {
             Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivityForResult(enableBtIntent, SOLICITA_ATIVACAO_BLUE);
         }
+
+        btnConexao.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(conexao){
+                    //desconect
+                }else {
+                    //connect
+                    Intent abreLista = new Intent(MainActivity.this, ListaDispositivos.class);
+                    startActivityForResult(abreLista, SOLICITA_CONEXAO_BLUE);
+                }
+            }
+        });
     }
 
     @Override
