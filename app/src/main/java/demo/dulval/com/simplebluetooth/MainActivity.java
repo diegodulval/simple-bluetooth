@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     BluetoothAdapter meuBlue = null;
     boolean conexao = false;
 
+    private static String MAC =null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
                 break;
+             case SOLICITA_CONEXAO_BLUE:
+                 if(resultCode == Activity.RESULT_OK){
+                     MAC = data.getExtras().getString(ListaDispositivos.ENDERECO_MAC);
+                 }else {
+                     Toast.makeText(getApplicationContext(), "Falha ao obter o MAC", Toast.LENGTH_LONG).show();;
+                 }
+
         }
     }
 }
